@@ -3,10 +3,10 @@ version: "3"
 services:
   web:
     build: .
-    image: img-wanderlust-tg-bot:v1
-    container_name: wanderlust_bot
+    image: ${IMAGE_NAME}
+    container_name: ${CONTAINER_NAME}
     command: python main.py
     ports:
-      - 80:80
+      - ${PORT}:${PORT2}
     volumes:
       - ./:/app
