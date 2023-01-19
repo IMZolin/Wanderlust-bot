@@ -3,6 +3,7 @@ version: "3"
 services:
   web:
     build: .
+    image: img-wanderlust-tg-bot:v1
     container_name: wanderlust_bot
     command: python main.py
     ports:
