@@ -6,7 +6,8 @@ from googletrans import Translator, constants
 
 translator = Translator()
 
-def get_weather(city,OW_TOKEN):
+
+def get_weather(city, OW_TOKEN):
     code_to_smile = {
         "Clear": "Ясно \U00002600",
         "Clouds": "Облачно \U00002601",
@@ -37,19 +38,22 @@ def get_weather(city,OW_TOKEN):
     wind = data["wind"]["speed"]
     sunrise_timestamp = datetime.datetime.fromtimestamp(data["sys"]["sunrise"])
     sunset_timestamp = datetime.datetime.fromtimestamp(data["sys"]["sunset"])
-    length_day = datetime.datetime.fromtimestamp(data["sys"]["sunset"]) - datetime.datetime.fromtimestamp(data["sys"]["sunrise"])
+    length_day = datetime.datetime.fromtimestamp(data["sys"]["sunset"]) - datetime.datetime.fromtimestamp(
+        data["sys"]["sunrise"])
     answer = f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}\n City: {city}\n {w_d_img} Temperature: {cur_weather}C; Feels like: {feel_weather}C;\n Humidity: {humidity}%; Pressure: {pressure} mmHg; Speed of wind: {wind}m/s;\n Sunrise: {sunrise_timestamp}; Sunset: {sunset_timestamp}; Length of day: {length_day};\n Good day!"
-        # print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}\n"
-        #         f"City: {city}\n"
-        #       f"{w_d_img} Temperature: {cur_weather}C; Feels like: {feel_weather}C;\n"
-        #       f"Humidity: {humidity}%; Pressure: {pressure} mmHg; Speed of wind: {wind}m/s;\n"
-        #       f"Sunrise: {sunrise_timestamp}; Sunset: {sunset_timestamp}; Length of day: {length_day};\n"
-        #       f"Good day!")
+    # print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}\n"
+    #         f"City: {city}\n"
+    #       f"{w_d_img} Temperature: {cur_weather}C; Feels like: {feel_weather}C;\n"
+    #       f"Humidity: {humidity}%; Pressure: {pressure} mmHg; Speed of wind: {wind}m/s;\n"
+    #       f"Sunrise: {sunrise_timestamp}; Sunset: {sunset_timestamp}; Length of day: {length_day};\n"
+    #       f"Good day!")
     return answer
+
 
 def main():
     city = input("Enter the city: ")
     get_weather(city, OW_TOKEN)
+
 
 if __name__ == '__main__':
     main()
